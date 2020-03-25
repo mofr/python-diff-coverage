@@ -8,4 +8,4 @@ threshold=$4
 cd $dir
 coverage combine $report_dir
 coverage xml
-diff-cover coverage.xml --fail-under=threshold --compare-branch=origin/$compare_ref
+diff-cover coverage.xml --fail-under=$threshold --compare-branch=origin/$compare_ref
