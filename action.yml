@@ -1,22 +1,23 @@
 name: 'Python diff Coverage'
 description: 'Check python code diff coverage'
 inputs:
+  compare_ref:
+    description: 'The branch, tag or SHA to compare to'
+    default: ${{ github.base_ref }}
   dir:
     description: 'Directory in which to run diff-cover'
-    required: false
     default: '.'
   report_dir:
     description: 'Directory containing coverage reports, relative to dir'
-    required: false
     default: '.'
   threshold:
     description: 'Coverage threshold'
-    required: false
     default: '100'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.compare_ref }}
     - ${{ inputs.dir }}
     - ${{ inputs.report_dir }}
     - ${{ inputs.threshold }}
